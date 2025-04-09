@@ -69,4 +69,8 @@
       <ProjectReference Include="..\ProjectF.Core\ProjectF.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Converters\" />
+    </ItemGroup>
+
 </Project>

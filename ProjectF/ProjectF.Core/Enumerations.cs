@@ -21,3 +21,42 @@ public enum NavigationType
     Back,
     SectionChange
 }
+
+public enum PlayerType
+{
+    [EnumLabel("G")]
+    Guard,
+    
+    [EnumLabel("OT")]
+    Tackle,
+    
+    [EnumLabel("C")]
+    Center,
+    
+    [EnumLabel("WR")]
+    WideReceiver,
+    
+    [Backfield]
+    [EnumLabel("TE")]
+    TightEnd,
+    
+    [Backfield]
+    [EnumLabel("HB")]
+    Halfback,
+    
+    [Backfield]
+    [EnumLabel("FB")]
+    Fullback,
+    
+    [Backfield]
+    [EnumLabel("QB")]
+    Quarterback,
+}
+
+public enum PresetRoutes
+{
+    Corner,
+    Streak,
+    Drag,
+    Post,
+}

@@ -7,7 +7,7 @@
              x:Class="ProjectF.UI.Playbooks"
              Shell.NavBarIsVisible="False">
     <Grid>
-        <Button Command="{Binding NavigateToPlaybooksCommand}"
+        <Button Command="{Binding NavigateToMainMenuCommand}"
                 HeightRequest="40"
                 HorizontalOptions="Start"
                 VerticalOptions="Start"

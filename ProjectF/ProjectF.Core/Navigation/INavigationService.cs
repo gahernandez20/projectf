@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using ProjectF.Core.Models.User;
 
 namespace ProjectF.Core.Navigation;

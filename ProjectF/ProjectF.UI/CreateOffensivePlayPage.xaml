@@ -1,9 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProjectF.UI.CreateOffensivePlayPage">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
+             xmlns:vms="clr-namespace:ProjectF.Core.ViewModels;assembly=ProjectF.Core"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="ProjectF.UI.CreateOffensivePlayPage"
+             x:DataType="vms:CreateOffensivePlayViewModel"
+             Title="Create an Offensive Play"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Resources>
+        <toolkit:BoolToObjectConverter x:Key="IsSquareSelectedConverter"
+                                       x:TypeArguments="Color"
+                                       FalseObject="Green"
+                                       TrueObject="DodgerBlue"/>
+        <toolkit:BoolToObjectConverter x:Key="IsEndZoneSquareSelectedConverter"
+                                       x:TypeArguments="Color"
+                                       FalseObject="Red"
+                                       TrueObject="Gold"/>
+    </ContentPage.Resources>
+    <Grid ColumnDefinitions="2*, 50, 2*"
+          RowDefinitions="*"
+          VerticalOptions="Fill"
+          HorizontalOptions="Fill">
+        <Grid Grid.Column="0"
+              HorizontalOptions="Center"
+              VerticalOptions="Center">
+            <Grid x:Name="GridField"/>
+        </Grid>
+        <Grid Grid.Column="2"
+              HorizontalOptions="Center"
+              VerticalOptions="Center">
+            <VerticalStackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 Spacing="20">
+                <Label Text="Create a Route:"
+                       WidthRequest="250"
+                       FontSize="16"
+                       HeightRequest="40"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                <Picker x:Name="PlayerUnitsPicker"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" 
+                        WidthRequest="250"
+                        HeightRequest="40"
+                        ItemsSource="{Binding PlayerTypes}"
+                        SelectedItem="{Binding SelectedPlayerUnit, Mode=TwoWay}">
+                </Picker>
+                <Button Text="{Binding SelectedItem, Source={Reference PlayerUnitsPicker}, StringFormat='Create a Route for: {0}'}"
+                        HeightRequest="40"
+                        WidthRequest="250"
+                        Margin="3"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Command="{Binding ToggleCreateRouteModeCommand}"/>
+                <Label x:Name="PresetLabel"
+                       Text="Select a Preset Route:"
+                       FontSize="16"
+                       HorizontalTextAlignment="Center"
+                       WidthRequest="250"
+                       HeightRequest="40"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       IsVisible="{Binding IsCreateRouteMode}"/>
+                <Picker HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="250"
+                        HeightRequest="40"
+                        IsVisible="{Binding IsCreateRouteMode}"
+                        ItemsSource="{Binding PresetRoutes}"
+                        SelectedItem="{Binding SelectedPresetRoute}"/>
+                <HorizontalStackLayout VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       Spacing="10">
+                    <Button Text="Cancel"
+                            WidthRequest="120"
+                            HeightRequest="40"
+                            IsVisible="{Binding IsCreateRouteMode}"
+                            Command="{Binding ToggleCreateRouteModeCommand}"/>
+                    <Button Text="Save Route"
+                            WidthRequest="120"
+                            HeightRequest="40"
+                            IsVisible="{Binding IsCreateRouteMode}"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
 </ContentPage>

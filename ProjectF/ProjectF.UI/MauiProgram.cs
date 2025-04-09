@@ -30,6 +30,9 @@ public static class MauiProgram
 
         builder.Services.AddTransient<Playbooks>();
         builder.Services.AddTransient<PlaybooksViewModel>();
+
+        builder.Services.AddTransient<CreateOffensivePlayPage>();
+        builder.Services.AddTransient<CreateOffensivePlayViewModel>();
         
         builder.Services.AddSingleton<NavigationService>();
         builder.Services.AddSingleton<INavigationService>(c => c.GetRequiredService<NavigationService>());
@@ -37,6 +40,7 @@ public static class MauiProgram
         Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
         Routing.RegisterRoute(nameof(MainMenu), typeof(MainMenu));
         Routing.RegisterRoute(nameof(Playbooks), typeof(Playbooks));
+        Routing.RegisterRoute(nameof(CreateOffensivePlayPage), typeof(CreateOffensivePlayPage));
         
 
 #if DEBUG

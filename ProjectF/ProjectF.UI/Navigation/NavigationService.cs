@@ -12,7 +12,7 @@ public class NavigationService : INavigationService
         => Navigate("Playbooks", new Dictionary<string, object> {{ "User", user}});
     
     public Task NavigateToCreateOffensivePlayAsync(User user)
-        => Navigate("CreateOffensivePlay", new Dictionary<string, object> {{ "User", user}});
+        => Navigate("CreateOffensivePlayPage", new Dictionary<string, object> {{ "User", user}});
     
     public Task NavigateBackAsync()
         => Shell.Current.GoToAsync("..");

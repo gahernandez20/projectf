@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ProjectF.Core.Models.User;
@@ -33,7 +32,7 @@ public partial class LoginViewModel : ObservableObject
         {
             Username = string.Empty;
             Password = string.Empty;
-            await _navigationService.NavigateToMainMenuAsync(new User() { Name = Username});
+            await _navigationService.NavigateToMainMenuAsync(new User { Name = Username});
         }
     }
 
